@@ -1,0 +1,11 @@
+# Fixed project name -> "docker compose down" works from any folder (Jenkins workspace or your home dir)
+name: lr-api
+
+services:
+  api:
+    image: farazanjamali/lr-predict-api:v1   # <-- change to your Docker Hub image:tag
+    container_name: lr-predict-api
+    pull_policy: always          # always fetch the latest pushed image on "up"
+    ports:
+      - "5000:5000"              # exposed externally on EC2 port 5000
+    restart: unless-stopped
